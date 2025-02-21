@@ -1,3 +1,5 @@
+/* styles.css */
+
 /* General Styles */
 body {
     background-color: #fdf6e3;
@@ -11,31 +13,42 @@ body {
 .header {
     background-image: url('assets/anime-header.jpg');
     background-size: cover;
+    background-position: center;
     padding: 50px 0;
     color: #fff;
 }
 
 /* Game Container */
 .game-container {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
+    position: relative;
+    width: 720px; /* Puzzle image width */
+    height: 728px; /* Puzzle image height */
+    margin: 20px auto;
+    border: 2px solid #ccc;
+    box-sizing: border-box;
 }
 
+/* Puzzle Grid */
 #puzzle {
-    display: grid;
-    grid-template-columns: repeat(4, 80px);
-    grid-template-rows: repeat(4, 80px);
-    gap: 2px;
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 /* Tiles */
 .tile {
-    width: 80px;
-    height: 80px;
-    background-size: 320px 320px;
+    position: absolute;
+    width: 180px;  /* 720px / 4 columns */
+    height: 182px; /* 728px / 4 rows */
+    background-image: url('assets/puzzle-image.jpg');
+    background-size: 720px 728px; /* Match the puzzle image dimensions */
+    border: 1px solid #fff;
+    box-sizing: border-box;
     cursor: pointer;
-    border: 1px solid #ccc;
+}
+
+.hidden {
+    opacity: 0;
 }
 
 /* Controls */
@@ -62,17 +75,4 @@ button:hover {
     background-color: #fce4ec;
     padding: 10px 0;
     margin-top: 20px;
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-    .tile {
-        width: 60px;
-        height: 60px;
-        background-size: 240px 240px;
-    }
-    #puzzle {
-        grid-template-columns: repeat(4, 60px);
-        grid-template-rows: repeat(4, 60px);
-    }
 }

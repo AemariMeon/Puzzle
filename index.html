@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Sliding Puzzle Game</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <title>Sliding Puzzle Game</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div class="header">
-        <h1>Sliding Puzzle Game</h1>
+  <!-- Anime Header at the top -->
+  <header>
+    <!-- Replace "anime_header.jpg" with your actual anime header file name -->
+    <img src="anime_header.jpg" alt="Anime Header" class="anime-header" />
+  </header>
+
+  <main>
+    <h1>Sliding Puzzle</h1>
+    <p>Rearrange the tiles to restore the image!</p>
+    
+    <div class="puzzle-container">
+      <!-- The puzzle pieces will be dynamically created here -->
+      <div id="puzzle"></div>
     </div>
-    <div class="game-container">
-        <div id="puzzle"></div>
-    </div>
-    <div class="controls">
-        <button id="shuffle">Shuffle</button>
-    </div>
-    <div class="footer">
-        <p>Made with ❤️ for my friend</p>
-    </div>
-    <script src="script.js"></script>
+
+    <button id="shuffleButton">Shuffle</button>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>

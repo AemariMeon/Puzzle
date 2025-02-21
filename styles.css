@@ -27,12 +27,12 @@ main {
   max-width: 800px;
 }
 
-/* Container that holds the puzzle */
+/* Container that holds the puzzle (smaller area: 400x400) */
 .puzzle-container {
   position: relative;
   margin: 20px auto;
-  width: 720px;  /* Match puzzle image width */
-  height: 728px; /* Match puzzle image height */
+  width: 400px;  
+  height: 400px; 
   background-color: #fff;
   border: 2px solid #ff99cc;
   overflow: hidden;
@@ -52,7 +52,8 @@ main {
   box-sizing: border-box;
   /* Replace puzzle_image.jpg with your puzzle image file name. */
   background-image: url("puzzle_image.jpg");
-  background-size: 720px 728px;
+  /* Scale the background to fit the new 400x400 area. */
+  background-size: 400px 400px;
   cursor: pointer;
   transition: all 0.2s ease;
 }

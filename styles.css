@@ -9,10 +9,10 @@ body {
   background-color: #ffe6f2; /* Cute pink background */
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
-  padding-bottom: 50px;
+  min-height: 100vh;
 }
 
-/* Anime header styling */
+/* Anime header styling (optional) */
 .anime-header {
   width: 100%;
   max-width: 1264px; /* The width of your header image */
@@ -21,55 +21,36 @@ body {
   margin: 0 auto;
 }
 
-/* Main puzzle heading and container */
+/* Main container */
 main {
-  margin: 20px auto;
   max-width: 800px;
+  margin: 20px auto;
 }
 
-/* Container that holds the puzzle (smaller area: 400x400) */
-.puzzle-container {
+/* Container that holds the puzzle_image in the background */
+.container {
   position: relative;
+  width: 400px;   /* Adjust to any desired size */
+  height: 400px;  /* Adjust to any desired size */
   margin: 20px auto;
-  width: 400px;  
-  height: 400px; 
-  background-color: #fff;
+  background: url("puzzle_image.jpg") center center / cover no-repeat;
   border: 2px solid #ff99cc;
   overflow: hidden;
 }
 
-/* The puzzle itself (absolute-positioned tiles go inside) */
-#puzzle {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-/* Each tile styling */
-.tile {
+/* The overlay that darkens everything except for the flashlight circle */
+.overlay {
   position: absolute;
-  border: 1px solid #ffffff;
-  box-sizing: border-box;
-  /* Replace puzzle_image.jpg with your puzzle image file name. */
-  background-image: url("puzzle_image.jpg");
-  /* Scale the background to fit the new 400x400 area. */
-  background-size: 400px 400px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-/* Shuffle button styling */
-button {
-  background-color: #ff99cc;
-  border: none;
-  color: white;
-  padding: 12px 20px;
-  font-size: 16px;
-  margin-top: 20px;
-  cursor: pointer;
-  border-radius: 8px;
-}
-
-button:hover {
-  background-color: #ff77aa;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none; /* So mouse events pass through to the container */
+  /* Default gradient (centered); we’ll update it in JS */
+  background: radial-gradient(
+    circle 100px at 50% 50%, 
+    rgba(255, 255, 255, 0), 
+    rgba(0, 0, 0, 0.95) 70%
+  );
+  transition: background-position 0.02s;
 }

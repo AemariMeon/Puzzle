@@ -1,22 +1,22 @@
-// Dimensions for the puzzle grid
+// Puzzle grid dimensions
 const rows = 4;
 const cols = 4;
 
-// The puzzle container in the DOM
+// The puzzle container
 const puzzle = document.getElementById('puzzle');
 
-// Match your puzzle image dimensions
-const totalWidth = 720;
-const totalHeight = 728;
+// We'll use a smaller overall puzzle area of 400x400
+const totalWidth = 400;
+const totalHeight = 400;
 
 // Each tile's width/height
-const tileWidth = totalWidth / cols;   // 720 / 4 = 180
-const tileHeight = totalHeight / rows; // 728 / 4 = 182
+const tileWidth = totalWidth / cols;   // 400 / 4 = 100
+const tileHeight = totalHeight / rows; // 400 / 4 = 100
 
 // We'll keep an array to track tile positions
-// 0..15 represent each piece, with 15 (the last one) being the "empty" slot.
+// Indices 0..15, with 15 as the "empty" slot.
 let tiles = [];
-let emptyTileIndex = rows * cols - 1; // 15 initially (bottom-right in 0-based index)
+let emptyTileIndex = rows * cols - 1; // 15
 
 /**
  * Initialize the puzzle on page load:
@@ -43,9 +43,8 @@ function init() {
 }
 
 /**
- * Shuffle the tiles array in-place.
- * This is a simple shuffle and does not guarantee solvability,
- * but it randomizes the puzzle for fun.
+ * Shuffle the tiles array in-place (simple random shuffle).
+ * This doesn't guarantee solvability, but randomizes the puzzle.
  */
 function shuffleTiles() {
   for (let i = tiles.length - 1; i > 0; i--) {
@@ -92,7 +91,7 @@ function renderPuzzle() {
     const originalRow = Math.floor(tileValue / cols);
     const originalCol = tileValue % cols;
 
-    // Adjust background position so it shows the correct part of the image
+    // Adjust background position to show correct part of the image
     tile.style.backgroundPosition = `-${originalCol * tileWidth}px -${originalRow * tileHeight}px`;
 
     // Add click event to attempt to move the tile
@@ -122,8 +121,28 @@ function moveTile(tileIndex) {
     // Swap the clicked tile with the empty tile
     [tiles[tileIndex], tiles[emptyTileIndex]] = [tiles[emptyTileIndex], tiles[tileIndex]];
     emptyTileIndex = tileIndex; // Update empty tile index
-    renderPuzzle(); // Re-render to update positions
+    renderPuzzle();
+
+    // Check if the puzzle is solved
+    if (checkWin()) {
+      setTimeout(() => {
+        alert('Congratulations! You solved the puzzle!');
+      }, 200);
+    }
   }
+}
+
+/**
+ * Checks if the puzzle is solved:
+ *  tiles[i] should be i for all i except the last tile (empty slot).
+ */
+function checkWin() {
+  for (let i = 0; i < tiles.length - 1; i++) {
+    if (tiles[i] !== i) {
+      return false;
+    }
+  }
+  return true;
 }
 
 // Initialize once the DOM is fully loaded

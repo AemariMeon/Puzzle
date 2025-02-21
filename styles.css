@@ -1,0 +1,78 @@
+/* General Styles */
+body {
+    background-color: #fdf6e3;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    text-align: center;
+    color: #333;
+}
+
+/* Header */
+.header {
+    background-image: url('assets/anime-header.jpg');
+    background-size: cover;
+    padding: 50px 0;
+    color: #fff;
+}
+
+/* Game Container */
+.game-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+#puzzle {
+    display: grid;
+    grid-template-columns: repeat(4, 80px);
+    grid-template-rows: repeat(4, 80px);
+    gap: 2px;
+}
+
+/* Tiles */
+.tile {
+    width: 80px;
+    height: 80px;
+    background-size: 320px 320px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
+
+/* Controls */
+.controls {
+    margin: 20px 0;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #ff85c0;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e57399;
+}
+
+/* Footer */
+.footer {
+    background-color: #fce4ec;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .tile {
+        width: 60px;
+        height: 60px;
+        background-size: 240px 240px;
+    }
+    #puzzle {
+        grid-template-columns: repeat(4, 60px);
+        grid-template-rows: repeat(4, 60px);
+    }
+}
